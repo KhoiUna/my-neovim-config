@@ -23,15 +23,22 @@ Plug 'preservim/nerdtree'
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Find keyword
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 " Find files plugin - Telescope
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
+
+" Prettier - post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 call plug#end()
 " }}}
 
 " KEYS MAPPINGS ------------------------------------------------------- {{{
-nnoremap <leader>t :belowright term<CR> 
+nnoremap <leader>t :botright 5sp \| term<CR>
 
 " Config NERDTree
 let NERDTreeShowHidden=1
@@ -52,4 +59,3 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
 inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
 " }}}
-
