@@ -1,3 +1,7 @@
+" Spell check
+set spelllang=en_us
+set spell
+
 " Add numbers to each line on the left-hand side.
 set relativenumber
 
@@ -50,7 +54,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 " Config Telescope - Find files using Telescope command-line sugar.
-noremap <leader>ff <cmd>Telescope find_files<cr>
+noremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
