@@ -42,7 +42,11 @@ call plug#end()
 " }}}
 
 " KEYS MAPPINGS ------------------------------------------------------- {{{
+" Open terminal bottom right
 nnoremap <leader>t :botright 5sp \| term<CR>
+
+" Toggle spell checking
+nnoremap <C-s> :setlocal spell! spelllang=en_us<CR>
 
 " Config NERDTree
 let NERDTreeShowHidden=1
