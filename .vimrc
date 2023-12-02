@@ -3,7 +3,7 @@ set spelllang=en_us
 set spell
 
 " Add numbers to each line on the left-hand side.
-set relativenumber
+" set relativenumber
 
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
@@ -37,6 +37,9 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
 
 " Prettier - post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+
+" Auto-focusing & auto-resizing split windows
+Plug 'nvim-focus/focus.nvim'
 
 call plug#end()
 " }}}
