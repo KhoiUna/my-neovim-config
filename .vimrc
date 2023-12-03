@@ -3,7 +3,7 @@ set spelllang=en_us
 set spell
 
 " Add numbers to each line on the left-hand side.
-" set relativenumber
+set relativenumber
 
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
@@ -23,6 +23,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
+
+" Terminal emulator
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -47,6 +50,9 @@ call plug#end()
 " KEYS MAPPINGS ------------------------------------------------------- {{{
 " Open terminal bottom right
 nnoremap <leader>t :botright 5sp \| term<CR>
+
+" Key mapping to copy current file path
+nnoremap <leader>cp :let @+=expand('%:p')<CR>
 
 " Toggle spell checking
 nnoremap <C-s> :setlocal spell! spelllang=en_us<CR>
