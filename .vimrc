@@ -1,6 +1,7 @@
+set encoding=utf8
+
 " Spell check
 set spelllang=en_us
-" set spell
 
 " Setting dark mode
 set background=dark 
@@ -71,14 +72,19 @@ nnoremap <leader>t :botright 5sp \| term<CR>:set norelativenumber<CR>:set nospel
 " Key mapping to copy current file path
 nnoremap <leader>cp :let @+=expand('%:p')<CR>
 
+" Turn off highlight
+nnoremap th :noh<CR>
+
 " Toggle spell checking
-nnoremap <C-s> :setlocal spell! spelllang=en_us<CR>
+nnoremap ts :setlocal spell! spelllang=en_us<CR>
+
+" Ctrl+S to save file
+nnoremap <C-s> :w<CR>
 
 " Config NERDTree
 let NERDTreeShowHidden=1
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap fn :NERDTreeFocus<CR>
+nnoremap tn :NERDTreeToggle<CR>
 " Start NERDTree when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
