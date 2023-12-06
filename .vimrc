@@ -1,4 +1,6 @@
 set encoding=utf8
+set relativenumber
+set number
 
 " Spell check
 set spelllang=en_us
@@ -10,9 +12,6 @@ autocmd vimenter * ++nested colorscheme gruvbox
 " Set tab as chars
 set list
 set listchars=tab:>-
-
-" Add numbers to each line on the left-hand side.
-set relativenumber
 
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
@@ -80,6 +79,8 @@ nnoremap ts :setlocal spell! spelllang=en_us<CR>
 
 " Ctrl+S to save file
 nnoremap <C-s> :w<CR>
+" Ctrl+Q to quit file 
+nnoremap <C-q> :q<CR>
 
 " Config NERDTree
 let NERDTreeShowHidden=1
