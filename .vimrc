@@ -81,6 +81,8 @@ nnoremap ts :setlocal spell! spelllang=en_us<CR>
 nnoremap <C-s> :w<CR>
 " Ctrl+Q to quit file 
 nnoremap <C-q> :q<CR>
+" Tab to switch tabs
+nnoremap <C-i> gt
 
 " Config NERDTree
 let NERDTreeShowHidden=1
