@@ -83,8 +83,8 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 " Tab to switch tabs
 nnoremap <C-i> gt
-" Ctrl + N to tabnew
-nnoremap <C-n> :tabnew<CR>
+" Ctrl + T to tabnew
+nnoremap <C-t> :tabnew<CR>
 
 " Config NERDTree
 let NERDTreeShowHidden=1
