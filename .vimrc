@@ -1,6 +1,7 @@
 set encoding=utf8
 set relativenumber
 set number
+set autoread
 
 " Spell check
 set spelllang=en_us
@@ -77,12 +78,10 @@ nnoremap th :noh<CR>
 " Toggle spell checking
 nnoremap ts :setlocal spell! spelllang=en_us<CR>
 
-" Ctrl+S to save file
-nnoremap <C-s> :w<CR>
-" Ctrl+Q to quit file 
-nnoremap <C-q> :q<CR>
-" Tab to switch tabs
+" <Tab> to switch next tabs
 nnoremap <C-i> gt
+" Shift + <Tab> to switch to prev tabs
+nnoremap <S-Tab> gT 
 " Ctrl + T to tabnew
 nnoremap <C-t> :tabnew<CR>
 
