@@ -81,7 +81,7 @@ nnoremap ts :setlocal spell! spelllang=en_us<CR>
 " <Tab> to switch next tabs
 nnoremap <C-i> gt
 " Shift + <Tab> to switch to prev tabs
-nnoremap <S-Tab> gT 
+"nnoremap <S-Tab> gT 
 " Ctrl + T to tabnew
 nnoremap <C-t> :tabnew<CR>
 
