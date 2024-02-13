@@ -2,6 +2,7 @@ set encoding=utf8
 set relativenumber
 set number
 set autoread
+set linebreak
 
 " Spell check
 set spelllang=en_us
