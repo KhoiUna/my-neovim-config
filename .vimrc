@@ -90,9 +90,6 @@ nnoremap <C-t> :tabnew<CR>
 let NERDTreeShowHidden=1
 nnoremap fn :NERDTreeFocus<CR>
 nnoremap tn :NERDTreeToggle<CR>
-" Start NERDTree when Vim is started without file arguments.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 " Config Telescope - Find files using Telescope command-line sugar.
 noremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
