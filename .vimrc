@@ -12,8 +12,8 @@ set background=dark
 autocmd vimenter * ++nested colorscheme gruvbox
 
 " Set tab as chars
-set list
-set listchars=tab:>-
+"set list
+"set listchars=tab:>-
 
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
@@ -78,6 +78,9 @@ nnoremap th :noh<CR>
 
 " Toggle spell checking
 nnoremap ts :setlocal spell! spelllang=en_us<CR>
+
+" Toggle line relativenumber & number
+nnoremap tl :set invrelativenumber!<CR>:set invnumber!<CR>
 
 " <Tab> to switch next tabs
 nnoremap <C-i> gt
