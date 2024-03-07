@@ -34,6 +34,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
 
+" Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+
 " Theme
 Plug 'morhetz/gruvbox'
 
@@ -78,6 +81,9 @@ nnoremap th :noh<CR>
 
 " Toggle spell checking
 nnoremap ts :setlocal spell! spelllang=en_us<CR>
+
+" Toggle markdown preview
+nnoremap md :MarkdownPreviewToggle<CR>
 
 " Toggle line relativenumber & number
 nnoremap tl :set invrelativenumber!<CR>:set invnumber!<CR>
