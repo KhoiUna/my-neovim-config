@@ -86,8 +86,20 @@ nnoremap tl :set invrelativenumber!<CR>:set invnumber!<CR>
 nnoremap <C-i> gt
 " Shift + <Tab> to switch to prev tabs
 "nnoremap <S-Tab> gT 
+" Open a new tab
+nnoremap nt :tabnew<CR>
+
+" Show ESLint warnings 
+nnoremap es :ALEDetail<CR>
+
 " Ctrl + T to tabnew
-nnoremap <C-t> :tabnew<CR>
+nnoremap <C-s> :Ag<CR>
+
+" Move between split windows
+nnoremap gk <C-w>k
+nnoremap gj <C-w>j
+nnoremap gh <C-w>h
+nnoremap gl <C-w>l
 
 " Config NERDTree
 let NERDTreeShowHidden=1
