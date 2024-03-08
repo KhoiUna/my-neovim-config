@@ -93,7 +93,7 @@ nnoremap <C-i> gt
 " Shift + <Tab> to switch to prev tabs
 "nnoremap <S-Tab> gT 
 " Open a new tab
-nnoremap nt :tabnew<CR>
+nnoremap <C-n> :tabnew<CR>
 
 " Show ESLint warnings 
 nnoremap es :ALEDetail<CR>
