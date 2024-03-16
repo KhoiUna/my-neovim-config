@@ -91,7 +91,7 @@ nnoremap tl :set invrelativenumber!<CR>:set invnumber!<CR>
 " <Tab> to switch next tabs
 nnoremap <C-i> gt
 " Shift + <Tab> to switch to prev tabs
-"nnoremap <S-Tab> gT 
+nnoremap <S-Tab> gT 
 " Open a new tab
 nnoremap <C-n> :tabnew<CR>
 
@@ -102,10 +102,10 @@ nnoremap es :ALEDetail<CR>
 nnoremap <C-s> :Ag<CR>
 
 " Move between split windows
-nnoremap gk <C-w>k
-nnoremap gj <C-w>j
-nnoremap gh <C-w>h
-nnoremap gl <C-w>l
+nnoremap mk <C-w>k
+nnoremap mj <C-w>j
+nnoremap mh <C-w>h
+nnoremap ml <C-w>l
 
 " Config NERDTree
 let NERDTreeShowHidden=1
