@@ -10,6 +10,7 @@ set spelllang=en_us
 " Setting dark mode
 set background=dark 
 autocmd vimenter * ++nested colorscheme gruvbox
+autocmd VimEnter * hi Normal ctermbg=none
 
 " Set tab as chars
 "set list
