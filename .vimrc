@@ -3,6 +3,7 @@ set relativenumber
 set number
 set autoread
 set linebreak
+set lazyredraw
 
 " Spell check
 set spelllang=en_us
@@ -28,6 +29,8 @@ set shiftwidth=4 smarttab
 
 " Disable mouse
 set mouse=
+
+runtime macros/matchit.vim
 
 " PLUGINS ---------------------------------------------------------------- {{{
 call plug#begin('~/.vim/plugged')
