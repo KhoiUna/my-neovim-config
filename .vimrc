@@ -98,6 +98,8 @@ nnoremap <C-i> gt
 nnoremap <S-Tab> gT 
 " Open a new tab
 nnoremap <C-n> :tabnew<CR>
+" Show Tab window dialog 
+noremap <leader><C-i> :W<CR>
 
 " Show ESLint warnings 
 nnoremap es :ALEDetail<CR>
