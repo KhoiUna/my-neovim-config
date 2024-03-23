@@ -188,6 +188,8 @@ cmp.setup.cmdline({ '/', '?' }, {
 -- LSP setup
 require'lspconfig'.ruby_ls.setup{}
 require'lspconfig'.tsserver.setup{}
+require'lspconfig'.gopls.setup{}
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
