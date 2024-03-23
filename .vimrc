@@ -35,6 +35,20 @@ runtime macros/matchit.vim
 " PLUGINS ---------------------------------------------------------------- {{{
 call plug#begin('~/.vim/plugged')
 
+" Treesitter highlighting
+Plug 'nvim-treesitter/nvim-treesitter'
+
+" LSP support & autocomplete
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
 Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
 
@@ -45,16 +59,13 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' 
 Plug 'morhetz/gruvbox'
 
 " Go formatter
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'neovim/nvim-lspconfig'
 Plug 'ray-x/go.nvim'
-Plug 'ray-x/guihua.lua' 
+
+" GUI library for Neovim plugin developers
+"Plug 'ray-x/guihua.lua'
 
 " Terminal emulator
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
-
-" Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Find keyword
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -125,8 +136,8 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Use TAB to autocomplete
-inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
-inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
+"inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
+"inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
 " }}}
 
 lua <<EOF
@@ -141,4 +152,35 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 require('go').setup()
 
+-- Set up nvim-cmp.
+local cmp = require'cmp'
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    end,
+  },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' }, -- For vsnip users.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- LSP setup
+require'lspconfig'.ruby_ls.setup{}
+require'lspconfig'.tsserver.setup{}
 EOF
