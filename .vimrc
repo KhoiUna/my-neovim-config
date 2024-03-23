@@ -135,10 +135,7 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" Use TAB to autocomplete
-"inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<TAB>"
-"inoremap <silent><expr> <cr> "\<c-g>u\<CR>"
-" }}}
+" END KEYMAPPINGS }}}
 
 lua <<EOF
 -- Run gofmt on save
