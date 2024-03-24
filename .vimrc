@@ -153,7 +153,7 @@ nmap <Leader>p <cmd>PrettierAsync<cr>
 " END KEYMAPPINGS }}}
 
 " Customize Vim startup screen
-let g:startify_custom_header = startify#pad(readfile('./vim-ascii.txt'))
+let g:startify_custom_header = startify#pad(readfile('/home/khoi/.nvim-config/vim-ascii.txt'))
 
 lua <<EOF
 -- Set up Mason
