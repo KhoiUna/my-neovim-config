@@ -5,6 +5,9 @@ set autoread
 set linebreak
 set lazyredraw
 
+" Enable syntax highlighting
+syntax enable
+
 " Spell check
 set spelllang=en_us
 
