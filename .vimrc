@@ -9,7 +9,7 @@ set lazyredraw
 set spelllang=en_us
 
 " Setting dark mode
-set background=dark 
+set background=dark
 autocmd vimenter * ++nested colorscheme gruvbox
 autocmd VimEnter * hi Normal ctermbg=none
 
@@ -35,6 +35,9 @@ runtime macros/matchit.vim
 " PLUGINS ---------------------------------------------------------------- {{{
 call plug#begin('~/.vim/plugged')
 
+" Portable package manager for Neovim
+Plug 'williamboman/mason.nvim'
+
 " Treesitter highlighting
 Plug 'nvim-treesitter/nvim-treesitter'
 
@@ -58,11 +61,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' 
 " Theme
 Plug 'morhetz/gruvbox'
 
-" Go formatter
-Plug 'ray-x/go.nvim'
+" Formatter
+Plug 'mhartington/formatter.nvim'
 
 " GUI library for Neovim plugin developers
-"Plug 'ray-x/guihua.lua'
+Plug 'ray-x/guihua.lua'
 
 " Terminal emulator
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
@@ -106,13 +109,13 @@ nnoremap tl :set invrelativenumber!<CR>:set invnumber!<CR>
 " <Tab> to switch next tabs
 nnoremap <C-i> gt
 " Shift + <Tab> to switch to prev tabs
-nnoremap <S-Tab> gT 
+nnoremap <S-Tab> gT
 " Open a new tab
 nnoremap <C-n> :tabnew<CR>
-" Show Tab window dialog 
+" Show Tab window dialog
 noremap <leader><C-i> :W<CR>
 
-" Show ESLint warnings 
+" Show ESLint warnings
 nnoremap es :ALEDetail<CR>
 
 " Ctrl + T to tabnew
@@ -135,19 +138,57 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+" Keymapping for formatter.nvim
+nnoremap <silent> <leader>f :Format<CR>
+
+" Keymapping for vim-prettier
+nmap <Leader>p <cmd>PrettierAsync<cr>
+
 " END KEYMAPPINGS }}}
 
 lua <<EOF
--- Run gofmt on save
-local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-   require('go.format').gofmt()
-  end,
-  group = format_sync_grp,
+-- Set up Mason
+require("mason").setup()
+
+-- Set up formatter.nvim: Utilities for creating configurations
+local util = require "formatter.util"
+-- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
+require("formatter").setup {
+  -- Enable or disable logging
+  logging = true,
+  -- Set the log level
+  log_level = vim.log.levels.WARN,
+  -- All formatter configurations are opt-in
+  filetype = {
+    -- Formatter configurations for filetype "<specified-below>" go here
+    -- and will be executed in order
+	go = {
+    	{
+    	    exe = "gofmt", -- Specify the formatting tool
+    	    args = {}, -- Add any arguments needed
+    	    stdin = true,
+    	},
+    },
+	-- add other filetype below to format
+	-- ...
+
+    -- Use the special "*" filetype for defining formatter configurations on
+    -- any filetype
+    ["*"] = {
+      -- "formatter.filetypes.any" defines default configurations for any
+      -- filetype
+      require("formatter.filetypes.any").remove_trailing_whitespace
+    }
+  }
+}
+-- Format after save
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+augroup("__formatter__", { clear = true })
+autocmd("BufWritePost", {
+	group = "__formatter__",
+	command = ":FormatWrite",
 })
-require('go').setup()
 
 -- Set up nvim-cmp.
 local cmp = require'cmp'
