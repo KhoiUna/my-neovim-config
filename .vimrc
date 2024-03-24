@@ -38,6 +38,9 @@ runtime macros/matchit.vim
 " PLUGINS ---------------------------------------------------------------- {{{
 call plug#begin('~/.vim/plugged')
 
+" Vim startup screen
+Plug 'mhinz/vim-startify'
+
 " Portable package manager for Neovim
 Plug 'williamboman/mason.nvim'
 
@@ -148,6 +151,9 @@ nnoremap <silent> <leader>f :Format<CR>
 nmap <Leader>p <cmd>PrettierAsync<cr>
 
 " END KEYMAPPINGS }}}
+
+" Customize Vim startup screen
+let g:startify_custom_header = startify#pad(split(system('figlet -w 200 IMKHOI'), '\n'))
 
 lua <<EOF
 -- Set up Mason
