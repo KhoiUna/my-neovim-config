@@ -124,7 +124,7 @@ noremap <leader><C-i> :W<CR>
 " Show ESLint warnings
 nnoremap es :ALEDetail<CR>
 
-" Ctrl + T to tabnew
+" Ctrl + S to search with `ag`
 nnoremap <C-s> :Ag<CR>
 
 " Move between split windows
